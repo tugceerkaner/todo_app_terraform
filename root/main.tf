@@ -8,3 +8,13 @@ module "vpc" {
     PRI_SUB3_CIDR = var.pri_sub3_cidr
     PRI_SUB4_CIDR = var.pri_sub4_cidr
 }
+
+module "natGW" {
+    source = "../modules/natGW"
+    IGW_ID = module.vpc.igw_id
+    VPC_ID = module.vpc.id
+    PUB_SUB1_ID = module.vpc.pub_sub1_id
+    PUB_SUB2_ID = module.vpc.pub_sub2_id
+    PRI_SUB3_ID = module.vpc.pri_sub3_id
+    PRI_SUB4_ID = module.vpc.pri_sub4_id
+}
