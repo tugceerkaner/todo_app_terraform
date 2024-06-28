@@ -18,3 +18,8 @@ module "natGW" {
     PRI_SUB3_ID = module.vpc.pri_sub3_id
     PRI_SUB4_ID = module.vpc.pri_sub4_id
 }
+
+module "iam" {
+    source = "../modules/iam"
+    PROJECT_NAME = var.project_name
+}
