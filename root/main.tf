@@ -23,3 +23,13 @@ module "iam" {
     source = "../modules/iam"
     PROJECT_NAME = var.project_name
 }
+
+module "eks" {
+    source = "../modules/eks"
+    PROJECT_NAME = var.project_name
+    EKS_CLUSTER_ARN = module.iam.eks_cluster_arn
+    PUB_SUB1_ID = module.vpc.pub_sub1_id
+    PUB_SUB2_ID = module.vpc.pub_sub2_id
+    PRI_SUB3_ID = module.vpc.pri_sub3_id
+    PRI_SUB4_ID = module.vpc.pri_sub4_id
+}
