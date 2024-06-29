@@ -33,3 +33,11 @@ module "eks" {
     PRI_SUB3_ID = module.vpc.pri_sub3_id
     PRI_SUB4_ID = module.vpc.pri_sub4_id
 }
+
+module "nodeGroup" {
+  source = "../modules/nodeGroup"
+  NODE_GROUP_ARN = module.iam.node_group_arn
+  EKS_CLUSTER_ID = module.eks.eks_cluster_id
+  PRI_SUB3_ID = module.vpc.pri_sub3_id
+  PRI_SUB4_ID = module.vpc.pri_sub4_id
+}
