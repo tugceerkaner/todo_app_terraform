@@ -12,7 +12,7 @@ module "vpc" {
 module "natGW" {
     source = "../modules/natGW"
     IGW_ID = module.vpc.igw_id
-    VPC_ID = module.vpc.id
+    VPC_ID = module.vpc.vpc_id
     PUB_SUB1_ID = module.vpc.pub_sub1_id
     PUB_SUB2_ID = module.vpc.pub_sub2_id
     PRI_SUB3_ID = module.vpc.pri_sub3_id

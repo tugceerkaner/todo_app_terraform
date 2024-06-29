@@ -2,19 +2,19 @@
 resource "aws_iam_role" "iam_role_eks_cluster" {
   name = "${var.PROJECT_NAME}-EKSRole"
   assume_role_policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "eks.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        }
-    ]
-  }
-  POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "eks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
 }
 
 # attach AmazonEKSClusterPolicy to the EKS role
@@ -26,27 +26,27 @@ resource "aws_iam_role_policy_attachment" "iam_role_eks_cluster_policy" {
 
 # attach ElasticLoadBalancingFullAccess policy to the EKS role
 resource "aws_iam_role_policy_attachment" "iam_role_elb_full_access" {
-    policy_arn = "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
-    role = aws_iam_role.iam_role_eks_cluster.name
+  policy_arn = "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
+  role = aws_iam_role.iam_role_eks_cluster.name
 }
 
 # create IAM role for EKS node group
 resource "aws_iam_role" "iam_role_node_group" {
-    name = "${var.PROJECT_NAME}-NodeGroupRole"
-    assume_role_policy = <<POLICY
+  name = "${var.PROJECT_NAME}-NodeGroupRole"
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
     {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Principal": {
-                    "Service": "ec2.amazonaws.com"
-                },
-                "Action": "sts:AssumeRole"
-            }
-        ]
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
     }
-    POLICY
+  ]
+}
+POLICY
 }
 
 # attach AmazonEKSWorkerNodePolicy to the worker node role

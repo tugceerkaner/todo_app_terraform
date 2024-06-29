@@ -7,10 +7,10 @@ resource "aws_eks_cluster" "eks_cluster" {
     endpoint_private_access = false
     endpoint_public_access = true
     subnet_ids = [
-        var.PUB_SUB1_ID,
-        var.PUB_SUB2_ID,
-        var.PRI_SUB3_ID,
-        var.PRI_SUB4_ID
+      var.PUB_SUB1_ID,
+      var.PUB_SUB2_ID,
+      var.PRI_SUB3_ID,
+      var.PRI_SUB4_ID
     ]
   }
 }
