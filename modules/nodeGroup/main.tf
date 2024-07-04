@@ -21,5 +21,5 @@ resource "aws_eks_node_group" "eks_node_group" {
     role = "${var.EKS_CLUSTER_ID}-NodeGroupRole"
     name = "${var.EKS_CLUSTER_ID}-NodeGroup" 
   }
-  version = "1.27"
+  version = "1.28"
 }

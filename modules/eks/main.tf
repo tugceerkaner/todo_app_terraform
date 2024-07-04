@@ -2,7 +2,7 @@
 resource "aws_eks_cluster" "eks_cluster" {
   name = var.PROJECT_NAME
   role_arn = var.EKS_CLUSTER_ARN
-  version = "1.27"
+  version = "1.28"
   vpc_config {
     endpoint_private_access = false
     endpoint_public_access = true
