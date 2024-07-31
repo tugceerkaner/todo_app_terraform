@@ -66,3 +66,9 @@ resource "aws_iam_role_policy_attachment" "iam_role_ecr_readOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role = aws_iam_role.iam_role_node_group.name
 }
+
+# attach AmazonEC2FullAccess policy to the EKS node group role
+resource "aws_iam_role_policy_attachment" "iam_role_ec2_full_access" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+  role       = aws_iam_role.iam_role_node_group.name
+}

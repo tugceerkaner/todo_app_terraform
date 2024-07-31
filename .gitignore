@@ -1,2 +1,3 @@
 root/.terraform/*
 root/.terraform.lock.hcl
+**/*.yaml
